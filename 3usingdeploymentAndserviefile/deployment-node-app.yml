@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-app
+  # untill here we were writin about deployment of pods 
+  #  now we will write about pod 
+  template:
+    metadata:
+      labels:
+        app: node-app
+    # containers inside pod 
+    spec:
+      containers:
+      - name: node-app
+        image: prashantbhati7/selfkillingnode:01
+        ports:
+        - containerPort: 3000
+
