@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: mongo-config 
+data:
+  MONGO_URI: mongodb://service-mongo-app:27017/k8s-demo
+  BACKEND_URI: http://service-node-app:3000/

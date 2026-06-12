@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    # containers inside pod 
+    spec:
+      containers:
+      - name: node-app
+        image: prashantbhati7/mongoconnectionwebapp:02
+        env: 
+          - name: MONGO_URI
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: MONGO_URI
+          - name: BACKEND_URI
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: BACKEND_URI
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-node-app
+spec:
+  selector:
+    app: node-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
