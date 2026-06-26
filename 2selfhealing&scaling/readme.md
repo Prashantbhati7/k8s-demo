@@ -36,6 +36,8 @@ give no of replicas required to scale up or down
 for scale up - give no of replicas more than now 
 for scale down - give no of replicas less than now 
 
+kubectl scale --replicas=<no-of-replica> <replicaionSet/replicationController>
+or 
 kubectl scale deployment <deploymwent-name> --replicas=<number-of-replicas>
 
 ```

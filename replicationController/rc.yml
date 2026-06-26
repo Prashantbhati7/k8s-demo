@@ -1,0 +1,41 @@
+# apiVersion: v1
+# kind: ReplicationController
+# metadata:
+#   name: nginx-rc 
+#   labels:
+#     env: demo
+# spec:
+#   template:
+#     metadata:
+#       name: nginx
+#       labels: 
+#         env: demo 
+#     spec:
+#       containers: 
+#         - name: nginx
+#           image: nginx:latest
+#   replicas: 3
+
+# replicationController can only manage pods created using that replication controller while in reaplicaSet we can manage other existing pods too 
+
+
+apiVersion: apps/v1     # find versions using kubectl explain ReplicaSet
+kind: ReplicaSet
+metadata:
+  name: nginx-rs
+  labels:
+    env: demo
+spec:
+  template:
+    metadata:
+      name: nginx
+      labels: 
+        env: demo 
+    spec:
+      containers: 
+        - name: nginx
+          image: nginx:latest
+  replicas: 3
+  selector:
+    matchLabels:
+      env: demo

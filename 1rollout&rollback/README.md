@@ -8,7 +8,7 @@ minikube start —driver=ssh
 minikube status 
 minikube dashboard
 
-
+kubectl run <pod-name> --name=<image-name/link>    // to create a pod
 kubectl create deployment my-app —image=<image-name/link>
 kubectl create deployment my-nginx —image=nginx:latest
 
@@ -46,6 +46,7 @@ kubectl set image deployment <deployment-name> <container-name-inside-pod>=<imag
 
 
 kubectl get pods
+
 ```
 
 ### More about zero downtime

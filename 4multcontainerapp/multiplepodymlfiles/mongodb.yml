@@ -14,8 +14,17 @@ spec:
     # containers inside pod 
     spec:
       containers:
-      - name: mongo-app
-        image: mongo:7
+        - name: mongo-app
+          image: mongo:7
+          volumeMounts:
+            - name: mongo-data
+              mountPath: /data/db
+
+      volumes:
+        - name: mongo-data
+          persistentVolumeClaim:
+            claimName: mongo-pvc
+
 
 ---
 apiVersion: v1
