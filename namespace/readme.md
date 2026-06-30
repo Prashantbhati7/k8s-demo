@@ -80,7 +80,7 @@ result: No we are not able to interact with the services in different namespace
 How can we interact then ? 
 
 ```
-[demo namespace pod]# cat etc/resolve.config     // this file contain the fully qualified domain name to access the services in this domain 
+[demo namespace pod]# cat etc/resolve.config     // this file contain the fully qualified domain name to access the services in this namespace
 search demo.svc.cluster.local svs.cluster.local cluster.local.nameserver <ip>
 ```
 ```
