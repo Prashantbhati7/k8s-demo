@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp-pod
+spec:
+  containers:
+    - name: my-nginx
+      image: nginx
+      env: 
+        - name: FIRSTNAME
+          value: "prashant"
+      # command: ['sh','-c','echo the nginx container is up and running ']
+  initContainers:
+    - name: init-myservice
+      image: busybox:1.28
+      command: ['sh','-c']
+      args: ['until nslookup myservice.default.svc.cluster.local; do echo waiting for myservice; sleep 2; done']
